@@ -1,4 +1,4 @@
-# num_calculator
+# Basic_calculator
 
 A Basic Calculator with Flutter.
 
