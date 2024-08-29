@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatefulWidget {
-  final  dynamic color;
+  final dynamic color;
   final Color textColor;
   final String buttonText;
   final VoidCallback buttontapped;

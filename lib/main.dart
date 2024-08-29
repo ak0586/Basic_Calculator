@@ -165,9 +165,9 @@ class HomePageState extends State<HomePage> {
                               // Check if last character is not an operator or a negative sign
                               if (len == 1) {
                                 // there is a single character without leading '-' then add '-' before the character
-                                userInput = '-' + userInput;
+                                userInput = '-$userInput';
                               } else if ((len - lastIntSize) == 0) {
-                                userInput = '-' + userInput;
+                                userInput = '-$userInput';
                               } else {
                                 // if (last - 1) character is a negative sign && length is greater than 2
                                 if (len - lastIntSize == 1) {
@@ -185,10 +185,8 @@ class HomePageState extends State<HomePage> {
                                   userInput = userInput;
                                 } else {
                                   // if (last-2) character is not an operator
-                                  userInput = userInput.substring(
-                                          0, len - lastIntSize) +
-                                      '-' +
-                                      userInput.substring(len - lastIntSize);
+                                  userInput =
+                                      '${userInput.substring(0, len - lastIntSize)}-${userInput.substring(len - lastIntSize)}';
                                 }
                               }
                             }
@@ -252,8 +250,9 @@ class HomePageState extends State<HomePage> {
                                 isOperator(buttons[index])) {
                               userInput = userInput.substring(0, len - 1) +
                                   buttons[index];
-                            } else
+                            } else {
                               userInput += buttons[index];
+                            }
                           });
                         },
                         buttonText: buttons[index],
@@ -298,8 +297,9 @@ class HomePageState extends State<HomePage> {
         evalString = evalString.substring(0, evalString.length - 2);
       }
       setState(() {
-        if (evalString.compareTo('Infinity') == 0)
+        if (evalString.compareTo('Infinity') == 0) {
           evalString = 'Can not divide by zero';
+        }
         answer = evalString;
       });
     } catch (e) {
